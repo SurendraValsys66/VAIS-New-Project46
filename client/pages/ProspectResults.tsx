@@ -676,6 +676,23 @@ export default function ProspectResults() {
     );
   };
 
+  const handleProspectsAdded = (listId: string, prospectIds: string[]) => {
+    setLists((prev) =>
+      prev.map((list) => {
+        if (list.id === listId) {
+          const newProspects = prospectIds.filter(
+            (id) => !list.prospects.includes(id)
+          );
+          return {
+            ...list,
+            prospects: [...list.prospects, ...newProspects],
+          };
+        }
+        return list;
+      })
+    );
+  };
+
   const toggleFavorite = (id: string, name?: string) => {
     // Changed to open dialog instead of directly adding to favorites
     handleAddToList(id, name || "");
