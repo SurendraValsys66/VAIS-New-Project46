@@ -485,45 +485,6 @@ export default function WishlistProspects() {
           </Card>
         </div>
 
-        {/* View List Dialog */}
-        <Dialog open={viewDialogOpen} onOpenChange={setViewDialogOpen}>
-          <DialogContent className="max-w-2xl max-h-96 overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>{selectedList?.name}</DialogTitle>
-              <DialogDescription>
-                Contains {selectedList?.prospects.length || 0} prospect
-                {selectedList?.prospects.length !== 1 ? "s" : ""} • Created{" "}
-                {selectedList && formatDate(selectedList.createdAt)}
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-sm text-gray-900 mb-3">
-                  Prospects in this list:
-                </h4>
-                {selectedList && selectedList.prospects.length > 0 ? (
-                  <div className="space-y-2 max-h-64 overflow-y-auto">
-                    {selectedList.prospects.map((prospectId, index) => (
-                      <div
-                        key={prospectId}
-                        className="flex items-center justify-between p-2 bg-gray-50 rounded border border-gray-200"
-                      >
-                        <span className="text-sm text-gray-700">
-                          {index + 1}. ID: {prospectId}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-sm text-gray-500">
-                    No prospects in this list
-                  </p>
-                )}
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-
         {/* Edit List Dialog */}
         <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
           <DialogContent>
