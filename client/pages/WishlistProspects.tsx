@@ -288,7 +288,8 @@ export default function WishlistProspects() {
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg">Your Lists</CardTitle>
                 <Badge variant="secondary" className="bg-gray-100">
-                  {filteredLists.length} List{filteredLists.length !== 1 ? "s" : ""}
+                  {filteredLists.length} List
+                  {filteredLists.length !== 1 ? "s" : ""}
                 </Badge>
               </div>
             </CardHeader>
@@ -315,8 +316,12 @@ export default function WishlistProspects() {
                             </div>
                           </TableCell>
                           <TableCell>
-                            <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                              {list.prospects.length} prospect{list.prospects.length !== 1 ? "s" : ""}
+                            <Badge
+                              variant="outline"
+                              className="bg-blue-50 text-blue-700 border-blue-200"
+                            >
+                              {list.prospects.length} prospect
+                              {list.prospects.length !== 1 ? "s" : ""}
                             </Badge>
                           </TableCell>
                           <TableCell>
@@ -336,11 +341,15 @@ export default function WishlistProspects() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem onClick={() => handleView(list)}>
+                                <DropdownMenuItem
+                                  onClick={() => handleView(list)}
+                                >
                                   <Eye className="w-4 h-4 mr-2" />
                                   View
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => handleEditStart(list)}>
+                                <DropdownMenuItem
+                                  onClick={() => handleEditStart(list)}
+                                >
                                   <Edit className="w-4 h-4 mr-2" />
                                   Edit
                                 </DropdownMenuItem>
@@ -358,7 +367,10 @@ export default function WishlistProspects() {
                       ))
                     ) : (
                       <TableRow>
-                        <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+                        <TableCell
+                          colSpan={4}
+                          className="text-center py-8 text-gray-500"
+                        >
                           No lists found matching "{searchTerm}"
                         </TableCell>
                       </TableRow>
@@ -400,7 +412,9 @@ export default function WishlistProspects() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500">No prospects in this list</p>
+                  <p className="text-sm text-gray-500">
+                    No prospects in this list
+                  </p>
                 )}
               </div>
             </div>

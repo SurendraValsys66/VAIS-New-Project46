@@ -1114,7 +1114,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                                 </button>
                               </TooltipTrigger>
                               <TooltipContent side="top" className="max-w-xs">
-                                <p className="text-sm">Upgrade Your Current Plan</p>
+                                <p className="text-sm">
+                                  Upgrade Your Current Plan
+                                </p>
                               </TooltipContent>
                             </Tooltip>
                           </div>
