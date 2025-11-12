@@ -638,6 +638,11 @@ export default function WishlistProspectDetails() {
     }));
   };
 
+  const revenueOptions = useMemo(
+    () => Array.from(new Set(prospectData.map((d) => d.revenue))).sort(),
+    [prospectData],
+  );
+
   // Filter and search
   const filteredData = useMemo(() => {
     return prospectData.filter((item) => {
@@ -647,9 +652,31 @@ export default function WishlistProspectDetails() {
         item.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.jobTitle.toLowerCase().includes(searchTerm.toLowerCase());
 
-      return matchesSearch;
+      const matchesJobFunction =
+        !filters.jobFunction || item.jobFunction === filters.jobFunction;
+      const matchesJobLevel =
+        !filters.jobLevel || item.jobLevel === filters.jobLevel;
+      const matchesCompany =
+        !filters.company || item.companyName === filters.company;
+      const matchesCountry =
+        !filters.country || item.country === filters.country;
+      const matchesRevenue =
+        !filters.revenue || item.revenue === filters.revenue;
+      const matchesEngagement =
+        item.engagementScore >= filters.engagementRange.min &&
+        item.engagementScore <= filters.engagementRange.max;
+
+      return (
+        matchesSearch &&
+        matchesJobFunction &&
+        matchesJobLevel &&
+        matchesCompany &&
+        matchesCountry &&
+        matchesRevenue &&
+        matchesEngagement
+      );
     });
-  }, [searchTerm]);
+  }, [searchTerm, filters, prospectData]);
 
   // Sort data
   const sortedData = useMemo(() => {
