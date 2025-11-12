@@ -95,14 +95,14 @@ export default function AddToListDialog({
     const newList: ProspectList = {
       id: `list-${Date.now()}`,
       name: newListName,
-      prospects: [prospectId],
+      prospects: currentProspectIds,
       createdAt: new Date().toISOString(),
     };
 
     onListCreated(newList);
     toast({
       title: "Success",
-      description: `List "${newListName}" created and prospect added!`,
+      description: `List "${newListName}" created and ${currentProspectIds.length} prospect${currentProspectIds.length > 1 ? "s" : ""} added!`,
     });
 
     setNewListName("");
