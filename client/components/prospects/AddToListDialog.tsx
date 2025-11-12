@@ -74,6 +74,7 @@ export default function AddToListDialog({
     });
 
     setNewListName("");
+    setSearchTerm("");
     setShowCreateList(false);
     onOpenChange(false);
   };
