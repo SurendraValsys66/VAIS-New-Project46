@@ -510,6 +510,12 @@ export default function CreateAccount() {
             <IntegrationsFooter />
           </div>
         </div>
+
+        <AgreementModal
+          open={agreementModalOpen}
+          onOpenChange={setAgreementModalOpen}
+          onAcknowledge={handleAgreementAcknowledge}
+        />
       </div>
 
       <div
