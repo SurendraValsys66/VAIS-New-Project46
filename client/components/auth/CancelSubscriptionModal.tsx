@@ -172,7 +172,7 @@ export default function CancelSubscriptionModal({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="w-full sm:w-1/2 max-w-xl">
         <DialogHeader>
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
