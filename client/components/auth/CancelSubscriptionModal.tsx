@@ -198,38 +198,38 @@ export default function CancelSubscriptionModal({
               Current Plan Details
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div className="flex items-start gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+              <div className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white border border-orange-200 flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-4 h-4 text-valasys-orange" />
+                  <CreditCard className="w-3 h-3 sm:w-4 sm:h-4 text-valasys-orange" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <div className="text-xs text-gray-600">Plan</div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-xs sm:text-sm text-gray-900 break-words">
                     {planDetails.plan}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white border border-orange-200 flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-4 h-4 text-valasys-orange" />
+                  <CreditCard className="w-3 h-3 sm:w-4 sm:h-4 text-valasys-orange" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <div className="text-xs text-gray-600">Remaining Credits</div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-xs sm:text-sm text-gray-900">
                     {planDetails.credits.toLocaleString()}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white border border-orange-200 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-4 h-4 text-valasys-orange" />
+                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-valasys-orange" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <div className="text-xs text-gray-600">Next Billing Date</div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-xs sm:text-sm text-gray-900">
                     {planDetails.nextBilling.toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
@@ -239,13 +239,13 @@ export default function CancelSubscriptionModal({
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white border border-orange-200 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-valasys-orange" />
+                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-valasys-orange" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <div className="text-xs text-gray-600">Plan Expiry</div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-xs sm:text-sm text-gray-900">
                     {planDetails.planExpiryDate.toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
