@@ -306,89 +306,54 @@ function ModernPaymentCard({
   return (
     <>
       <div className="group relative">
-        {method.isDefault ? (
-          <div
-            className="relative rounded-2xl overflow-hidden h-52 bg-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 p-6 flex flex-col justify-between"
-            style={{
-              border: "3px solid",
-              borderImage: `${getCardBorderGradient(method.cardNetwork)} 1`,
-            }}
-          >
-            <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <div className="text-xs font-semibold text-gray-600 tracking-wider">
-                  {isPayPal ? "PAYPAL" : "CREDIT CARD"}
-                </div>
-                <div className="text-lg font-bold text-gray-900">
-                  {getCardNetwork(method)}
-                </div>
+        <div
+          className={`relative rounded-2xl overflow-hidden h-52 bg-white transition-all duration-300 transform hover:scale-105 p-6 flex flex-col justify-between ${
+            method.isDefault
+              ? "shadow-md hover:shadow-lg"
+              : "border-2 border-gray-300 hover:border-gray-400 shadow-sm hover:shadow-md"
+          }`}
+          style={
+            method.isDefault
+              ? {
+                  border: "3px solid",
+                  borderImage: `${getCardBorderGradient(method.cardNetwork)} 1`,
+                }
+              : undefined
+          }
+        >
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <div className="text-xs font-semibold text-gray-600 tracking-wider">
+                {isPayPal ? "PAYPAL" : "CREDIT CARD"}
               </div>
-              <div className="flex items-center gap-2 flex-wrap justify-end">
-                <div className="bg-green-100 px-3 py-1.5 rounded-full border border-green-300">
-                  <span
-                    className="flex items-center gap-1.5 text-green-700 font-semibold"
-                    style={{ fontSize: "12px" }}
-                  >
-                    <span className="inline-flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Autopay enabled
-                  </span>
-                </div>
-                <div className="bg-blue-50 px-3 py-1.5 rounded-full border border-blue-300">
-                  <span
-                    className="flex items-center gap-1.5 text-blue-700 font-semibold"
-                    style={{ fontSize: "12px" }}
-                  >
-                    <CheckCircle className="w-3.5 h-3.5" />
-                    Default
-                  </span>
-                </div>
-                <button
-                  onClick={() => setDeleteOpen(true)}
-                  className="p-2 rounded-full bg-red-100 border border-red-300 text-red-600 hover:bg-red-200 transition-all duration-200"
-                  title="Delete card"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+              <div className="text-lg font-bold text-gray-900">
+                {getCardNetwork(method)}
               </div>
             </div>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm font-semibold text-gray-900 tracking-wide">
-                  {method.cardholderName.toUpperCase()}
-                </p>
-              </div>
-
-              <div className="flex items-end justify-between">
-                <div className="flex-1">
-                  <p className="text-lg font-mono font-bold text-gray-900 tracking-widest">
-                    {isPayPal
-                      ? method.cardNumber
-                      : `•••• •••• •••• ${method.cardNumber}`}
-                  </p>
-                </div>
-                {!isPayPal && (
-                  <div className="text-right">
-                    <p className="font-mono font-bold text-sm text-gray-900">
-                      {method.expiryDate}
-                    </p>
+            <div className="flex items-center gap-2 flex-wrap justify-end">
+              {method.isDefault && (
+                <>
+                  <div className="bg-green-100 px-3 py-1.5 rounded-full border border-green-300">
+                    <span
+                      className="flex items-center gap-1.5 text-green-700 font-semibold"
+                      style={{ fontSize: "12px" }}
+                    >
+                      <span className="inline-flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                      Autopay enabled
+                    </span>
                   </div>
-                )}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="relative rounded-2xl overflow-hidden h-52 bg-white border-2 border-gray-300 hover:border-gray-400 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 p-6 flex flex-col justify-between">
-            <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <div className="text-xs font-semibold text-gray-600 tracking-wider">
-                  {isPayPal ? "PAYPAL" : "CREDIT CARD"}
-                </div>
-                <div className="text-lg font-bold text-gray-900">
-                  {getCardNetwork(method)}
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
+                  <div className="bg-blue-50 px-3 py-1.5 rounded-full border border-blue-300">
+                    <span
+                      className="flex items-center gap-1.5 text-blue-700 font-semibold"
+                      style={{ fontSize: "12px" }}
+                    >
+                      <CheckCircle className="w-3.5 h-3.5" />
+                      Default
+                    </span>
+                  </div>
+                </>
+              )}
+              {!method.isDefault && (
                 <button
                   onClick={() => onSetDefault(method.id)}
                   className="p-2 rounded-full bg-orange-100 border border-orange-300 text-valasys-orange hover:bg-orange-200 transition-all duration-200"
@@ -396,42 +361,42 @@ function ModernPaymentCard({
                 >
                   <CheckCircle className="w-4 h-4" />
                 </button>
-                <button
-                  onClick={() => setDeleteOpen(true)}
-                  className="p-2 rounded-full bg-red-100 border border-red-300 text-red-600 hover:bg-red-200 transition-all duration-200"
-                  title="Delete card"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm font-semibold text-gray-900 tracking-wide">
-                  {method.cardholderName.toUpperCase()}
-                </p>
-              </div>
-
-              <div className="flex items-end justify-between">
-                <div className="flex-1">
-                  <p className="text-lg font-mono font-bold text-gray-900 tracking-widest">
-                    {isPayPal
-                      ? method.cardNumber
-                      : `•••• •••• •••• ${method.cardNumber}`}
-                  </p>
-                </div>
-                {!isPayPal && (
-                  <div className="text-right">
-                    <p className="font-mono font-bold text-sm text-gray-900">
-                      {method.expiryDate}
-                    </p>
-                  </div>
-                )}
-              </div>
+              )}
+              <button
+                onClick={() => setDeleteOpen(true)}
+                className="p-2 rounded-full bg-red-100 border border-red-300 text-red-600 hover:bg-red-200 transition-all duration-200"
+                title="Delete card"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
             </div>
           </div>
-        )}
+
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm font-semibold text-gray-900 tracking-wide">
+                {method.cardholderName.toUpperCase()}
+              </p>
+            </div>
+
+            <div className="flex items-end justify-between">
+              <div className="flex-1">
+                <p className="text-lg font-mono font-bold text-gray-900 tracking-widest">
+                  {isPayPal
+                    ? method.cardNumber
+                    : `•••• •••• •••• ${method.cardNumber}`}
+                </p>
+              </div>
+              {!isPayPal && (
+                <div className="text-right">
+                  <p className="font-mono font-bold text-sm text-gray-900">
+                    {method.expiryDate}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
