@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CreditCard, AlertCircle, Check, Zap } from "lucide-react";
+import { CreditCard, AlertCircle, Check } from "lucide-react";
 
 const COUNTRIES = [
   "United States",
@@ -276,7 +276,7 @@ export function AddPaymentMethodDialog({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="max-w-lg w-full mx-2 overflow-y-auto max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="text-xl md:text-2xl font-bold bg-gradient-to-r from-valasys-orange to-valasys-orange-light bg-clip-text text-transparent">
+          <DialogTitle className="text-xl md:text-2xl font-bold text-black">
             {isEditMode ? "Edit Payment Method" : "Add Payment Method"}
           </DialogTitle>
           <p className="text-xs md:text-sm text-gray-600 mt-2">
@@ -286,39 +286,37 @@ export function AddPaymentMethodDialog({
           </p>
         </DialogHeader>
 
-        <div className="space-y-6 mt-6">
-          <div className="grid grid-cols-2 gap-2 md:gap-3">
+        <div className="space-y-4 mt-4">
+          <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => {
                 setPaymentType("card");
                 setErrors([]);
               }}
-              className={`group relative p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`group relative px-3 py-3 rounded-xl border-2 transition-all duration-300 ${
                 paymentType === "card"
-                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg"
-                  : "border-gray-200 hover:border-gray-300 hover:shadow-md"
+                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-md"
+                  : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
               }`}
             >
-              <div className="flex flex-col items-center gap-2 md:gap-3">
+              <div className="flex flex-col items-center gap-2">
                 <div
-                  className={`p-2 md:p-3 rounded-xl transition-all transform ${
+                  className={`p-2 rounded-lg transition-all ${
                     paymentType === "card"
-                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white scale-110 shadow-lg"
+                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white shadow-md"
                       : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
                   }`}
                 >
-                  <CreditCard className="w-5 md:w-6 h-5 md:h-6" />
+                  <CreditCard className="w-5 h-5" />
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-gray-900 text-sm md:text-base">
-                    Card
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">Visa, Mastercard</p>
+                  <p className="font-semibold text-gray-900 text-xs">Card</p>
+                  <p className="text-xs text-gray-500">Visa, Mastercard</p>
                 </div>
               </div>
               {paymentType === "card" && (
-                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 md:p-1.5 shadow-lg animate-bounce">
-                  <Check className="w-3 md:w-4 h-3 md:h-4 text-white" />
+                <div className="absolute -top-1 -right-1 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 shadow-md">
+                  <Check className="w-3 h-3 text-white" />
                 </div>
               )}
             </button>
@@ -328,22 +326,22 @@ export function AddPaymentMethodDialog({
                 setPaymentType("paypal");
                 setErrors([]);
               }}
-              className={`group relative p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`group relative px-3 py-3 rounded-xl border-2 transition-all duration-300 ${
                 paymentType === "paypal"
-                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg"
-                  : "border-gray-200 hover:border-gray-300 hover:shadow-md"
+                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-md"
+                  : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
               }`}
             >
-              <div className="flex flex-col items-center gap-2 md:gap-3">
+              <div className="flex flex-col items-center gap-2">
                 <div
-                  className={`p-2 md:p-3 rounded-xl transition-all transform ${
+                  className={`p-2 rounded-lg transition-all ${
                     paymentType === "paypal"
-                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white scale-110 shadow-lg"
+                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white shadow-md"
                       : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
                   }`}
                 >
                   <svg
-                    className="w-5 md:w-6 h-5 md:h-6"
+                    className="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -351,15 +349,13 @@ export function AddPaymentMethodDialog({
                   </svg>
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-gray-900 text-sm md:text-base">
-                    PayPal
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">Fast & secure</p>
+                  <p className="font-semibold text-gray-900 text-xs">PayPal</p>
+                  <p className="text-xs text-gray-500">Fast & secure</p>
                 </div>
               </div>
               {paymentType === "paypal" && (
-                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 md:p-1.5 shadow-lg animate-bounce">
-                  <Check className="w-3 md:w-4 h-3 md:h-4 text-white" />
+                <div className="absolute -top-1 -right-1 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 shadow-md">
+                  <Check className="w-3 h-3 text-white" />
                 </div>
               )}
             </button>
@@ -369,95 +365,174 @@ export function AddPaymentMethodDialog({
             <div className="space-y-6 animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="space-y-5">
                 <div>
-                  <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
-                    <span className="inline-flex items-center justify-center w-5 md:w-6 h-5 md:h-6 bg-gradient-to-br from-valasys-orange to-valasys-orange-light text-white text-xs font-bold rounded-full">
-                      1
-                    </span>
-                    Card Number
+                  <label className="block text-xs font-semibold text-gray-700 mb-3">
+                    Card Information
                   </label>
-                  <div className="relative group">
-                    <Input
-                      placeholder="1234 1234 1234 1234"
-                      value={formData.cardNumber}
-                      onChange={handleCardNumberChange}
-                      disabled={isEditMode}
-                      className={`h-10 md:h-12 text-sm md:text-base font-mono tracking-wider transition-all border-2 focus:ring-2 focus:ring-valasys-orange/30 ${
-                        isEditMode ? "bg-gray-100 cursor-not-allowed" : ""
-                      } ${
-                        getErrorMessage("cardNumber")
-                          ? "border-red-500 focus:border-red-500"
-                          : "border-gray-200 focus:border-valasys-orange"
-                      }`}
-                      maxLength={19}
-                    />
-                    {cardNetwork && (
-                      <div className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 animate-fade-in">
-                        <div className="px-2 md:px-3 py-1 md:py-1.5 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-lg text-xs font-bold text-white shadow-lg">
-                          {cardNetwork}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  {getErrorMessage("cardNumber") && (
-                    <div className="flex items-center gap-2 mt-2 text-sm text-red-600 animate-in fade-in">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      <span>{getErrorMessage("cardNumber")}</span>
-                    </div>
-                  )}
-                </div>
 
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <div>
-                    <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2">
-                      Expires
-                    </label>
-                    <Input
-                      placeholder="MM/YY"
-                      value={formData.expiryDate}
-                      onChange={handleExpiryChange}
-                      className={`h-10 md:h-12 text-base md:text-lg font-mono font-bold tracking-widest transition-all border-2 focus:ring-2 focus:ring-valasys-orange/30 ${
-                        getErrorMessage("expiryDate")
-                          ? "border-red-500 focus:border-red-500"
-                          : "border-gray-200 focus:border-valasys-orange"
-                      }`}
-                      maxLength={5}
-                    />
-                    {getErrorMessage("expiryDate") && (
-                      <div className="flex items-center gap-2 mt-1.5 md:mt-2 text-xs md:text-sm text-red-600 animate-in fade-in">
-                        <AlertCircle className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
-                        <span>{getErrorMessage("expiryDate")}</span>
+                  <div className="space-y-3">
+                    <div className="relative group">
+                      <Input
+                        placeholder="1234 1234 1234 1234"
+                        value={formData.cardNumber}
+                        onChange={handleCardNumberChange}
+                        disabled={isEditMode}
+                        className={`h-11 text-sm font-mono tracking-wider transition-all border rounded-lg pr-28 ${
+                          isEditMode ? "bg-gray-100 cursor-not-allowed" : ""
+                        } ${
+                          getErrorMessage("cardNumber")
+                            ? "border-red-500"
+                            : "border-gray-200 focus:border-valasys-orange"
+                        }`}
+                        maxLength={19}
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-1">
+                        {/* VISA */}
+                        <svg
+                          className={`w-7 h-5 transition-opacity ${cardNetwork === "Visa" ? "opacity-100" : "opacity-30"}`}
+                          viewBox="0 0 48 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="48" height="32" rx="3" fill="#1434CB" />
+                          <text
+                            x="24"
+                            y="18"
+                            textAnchor="middle"
+                            fill="white"
+                            fontSize="10"
+                            fontWeight="bold"
+                            dominantBaseline="middle"
+                          >
+                            VISA
+                          </text>
+                        </svg>
+
+                        {/* Mastercard */}
+                        <svg
+                          className={`w-7 h-5 transition-opacity ${cardNetwork === "Mastercard" ? "opacity-100" : "opacity-30"}`}
+                          viewBox="0 0 48 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="48"
+                            height="32"
+                            rx="3"
+                            fill="white"
+                            stroke="#E5E7EB"
+                            strokeWidth="0.5"
+                          />
+                          <circle cx="16" cy="16" r="9" fill="#EB001B" />
+                          <circle cx="32" cy="16" r="9" fill="#FF5F00" />
+                          <circle
+                            cx="24"
+                            cy="16"
+                            r="9"
+                            fill="#FF5F00"
+                            opacity="0.6"
+                          />
+                        </svg>
+
+                        {/* American Express */}
+                        <svg
+                          className={`w-7 h-5 transition-opacity ${cardNetwork === "American Express" ? "opacity-100" : "opacity-30"}`}
+                          viewBox="0 0 48 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="48" height="32" rx="3" fill="#006FCF" />
+                          <text
+                            x="24"
+                            y="18"
+                            textAnchor="middle"
+                            fill="white"
+                            fontSize="9"
+                            fontWeight="bold"
+                            dominantBaseline="middle"
+                          >
+                            AMEX
+                          </text>
+                        </svg>
+
+                        {/* Discover */}
+                        <svg
+                          className={`w-7 h-5 transition-opacity ${cardNetwork === "Discover" ? "opacity-100" : "opacity-30"}`}
+                          viewBox="0 0 48 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="48" height="32" rx="3" fill="#FF6000" />
+                          <circle cx="28" cy="16" r="5" fill="white" />
+                        </svg>
+                      </div>
+                    </div>
+                    {getErrorMessage("cardNumber") && (
+                      <div className="flex items-center gap-2 text-xs text-red-600 animate-in fade-in">
+                        <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                        <span>{getErrorMessage("cardNumber")}</span>
                       </div>
                     )}
-                  </div>
-                  <div>
-                    <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2">
-                      CVC
-                    </label>
-                    <Input
-                      placeholder="123"
-                      value={formData.cvc}
-                      onChange={handleCvcChange}
-                      disabled={isEditMode}
-                      className={`h-10 md:h-12 text-base md:text-lg font-mono font-bold tracking-widest transition-all border-2 focus:ring-2 focus:ring-valasys-orange/30 ${
-                        isEditMode ? "bg-gray-100 cursor-not-allowed" : ""
-                      } ${
-                        getErrorMessage("cvc")
-                          ? "border-red-500 focus:border-red-500"
-                          : "border-gray-200 focus:border-valasys-orange"
-                      }`}
-                      maxLength={4}
-                    />
-                    {getErrorMessage("cvc") && (
-                      <div className="flex items-center gap-2 mt-1.5 md:mt-2 text-xs md:text-sm text-red-600 animate-in fade-in">
-                        <AlertCircle className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
-                        <span>{getErrorMessage("cvc")}</span>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="relative">
+                        <Input
+                          placeholder="MM/YY"
+                          value={formData.expiryDate}
+                          onChange={handleExpiryChange}
+                          className={`h-11 text-sm font-mono tracking-widest transition-all border rounded-lg ${
+                            getErrorMessage("expiryDate")
+                              ? "border-red-500"
+                              : "border-gray-200 focus:border-valasys-orange"
+                          }`}
+                          maxLength={5}
+                        />
+                        {getErrorMessage("expiryDate") && (
+                          <div className="flex items-center gap-2 mt-1.5 text-xs text-red-600 animate-in fade-in">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                            <span>{getErrorMessage("expiryDate")}</span>
+                          </div>
+                        )}
                       </div>
-                    )}
+                      <div className="relative">
+                        <Input
+                          placeholder="CVC"
+                          value={formData.cvc}
+                          onChange={handleCvcChange}
+                          disabled={isEditMode}
+                          className={`h-11 text-sm font-mono tracking-widest transition-all border rounded-lg pr-10 ${
+                            isEditMode ? "bg-gray-100 cursor-not-allowed" : ""
+                          } ${
+                            getErrorMessage("cvc")
+                              ? "border-red-500"
+                              : "border-gray-200 focus:border-valasys-orange"
+                          }`}
+                          maxLength={4}
+                        />
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                          <svg
+                            className="w-5 h-4 text-gray-400"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <rect x="2" y="5" width="20" height="14" rx="2" />
+                            <rect x="2" y="5" width="20" height="4" />
+                          </svg>
+                        </div>
+                        {getErrorMessage("cvc") && (
+                          <div className="flex items-center gap-2 mt-1.5 text-xs text-red-600 animate-in fade-in">
+                            <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                            <span>{getErrorMessage("cvc")}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
                     Cardholder Name
                   </label>
                   <Input
@@ -469,22 +544,22 @@ export function AddPaymentMethodDialog({
                         cardholderName: e.target.value,
                       })
                     }
-                    className={`h-10 md:h-12 text-sm md:text-base transition-all border-2 focus:ring-2 focus:ring-valasys-orange/30 ${
+                    className={`h-11 text-sm transition-all border rounded-lg ${
                       getErrorMessage("cardholderName")
-                        ? "border-red-500 focus:border-red-500"
+                        ? "border-red-500"
                         : "border-gray-200 focus:border-valasys-orange"
                     }`}
                   />
                   {getErrorMessage("cardholderName") && (
-                    <div className="flex items-center gap-2 mt-1.5 md:mt-2 text-xs md:text-sm text-red-600 animate-in fade-in">
-                      <AlertCircle className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
+                    <div className="flex items-center gap-2 mt-1.5 text-xs text-red-600 animate-in fade-in">
+                      <AlertCircle className="w-3 h-3 flex-shrink-0" />
                       <span>{getErrorMessage("cardholderName")}</span>
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2">
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
                     Country or Region
                   </label>
                   <Select
@@ -493,7 +568,7 @@ export function AddPaymentMethodDialog({
                       setFormData({ ...formData, country: value })
                     }
                   >
-                    <SelectTrigger className="h-10 md:h-12 text-sm md:text-base border-2 border-gray-200 focus:border-valasys-orange">
+                    <SelectTrigger className="h-11 text-sm border rounded-lg border-gray-200">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -512,25 +587,25 @@ export function AddPaymentMethodDialog({
                   variant="outline"
                   onClick={handleClose}
                   disabled={isSubmitting}
-                  className="flex-1 h-10 md:h-12 border-2 border-gray-300 hover:border-gray-400 font-semibold text-sm md:text-base text-gray-700 transition-all"
+                  className="flex-1 h-11 border border-gray-300 hover:border-gray-400 font-semibold text-sm text-gray-700 transition-all rounded-lg"
                 >
                   Cancel
                 </Button>
                 <Button
                   onClick={handleAddCard}
                   disabled={isSubmitting}
-                  className="flex-1 h-10 md:h-12 bg-gradient-to-r from-valasys-orange to-valasys-orange-light hover:from-valasys-orange/90 hover:to-valasys-orange-light/90 disabled:opacity-50 text-white font-bold text-sm md:text-base shadow-lg hover:shadow-xl transition-all"
+                  className="flex-1 h-11 bg-gradient-to-r from-valasys-orange to-valasys-orange-light hover:from-valasys-orange/90 hover:to-valasys-orange-light/90 disabled:opacity-50 text-white font-bold text-sm shadow-lg hover:shadow-xl transition-all rounded-lg"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-4 md:w-5 h-4 md:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       <span className="hidden sm:inline">
                         {isEditMode ? "Updating..." : "Adding..."}
                       </span>
                     </div>
                   ) : (
                     <div className="flex items-center justify-center gap-2">
-                      <Check className="w-4 md:w-5 h-4 md:h-5" />
+                      <Check className="w-4 h-4" />
                       <span className="hidden sm:inline">
                         {isEditMode ? "Update Card" : "Add Card"}
                       </span>
@@ -546,23 +621,6 @@ export function AddPaymentMethodDialog({
 
           {paymentType === "paypal" && (
             <div className="space-y-6 animate-in fade-in slide-in-from-top-2 duration-300">
-              <div className="bg-gradient-to-br from-orange-50 via-orange-100 to-orange-50 rounded-2xl p-4 md:p-6 border-2 border-valasys-orange/30 shadow-lg">
-                <div className="flex items-start gap-3 md:gap-4">
-                  <div className="p-2 md:p-3 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-xl shadow-lg flex-shrink-0">
-                    <Zap className="w-5 md:w-6 h-5 md:h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-base md:text-lg">
-                      Secure & Fast Payment
-                    </p>
-                    <p className="text-xs md:text-sm text-gray-700 mt-1">
-                      PayPal securely handles your payment without sharing card
-                      details
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               <div>
                 <label className="block text-xs md:text-sm font-bold text-gray-900 mb-2">
                   PayPal Email Address
@@ -574,9 +632,9 @@ export function AddPaymentMethodDialog({
                   onChange={(e) =>
                     setFormData({ ...formData, paypalEmail: e.target.value })
                   }
-                  className={`h-10 md:h-12 text-sm md:text-base transition-all border-2 focus:ring-2 focus:ring-valasys-orange/30 ${
+                  className={`h-10 md:h-12 text-sm md:text-base transition-all border rounded-lg ${
                     getErrorMessage("paypalEmail")
-                      ? "border-red-500 focus:border-red-500"
+                      ? "border-red-500"
                       : "border-gray-200 focus:border-valasys-orange"
                   }`}
                 />
